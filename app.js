@@ -10,6 +10,7 @@ var express = require('express')
   , path = require('path')
   , flash = require('connect-flash');
 var app = express();
+console.log("redistogourl:"+process.env.REDISTOGO_URL);
 
 app.configure(function(){
   app.use(express.cookieParser('jgtodos'));
