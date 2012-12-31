@@ -1,0 +1,73 @@
+/* @override http://localhost:3000/stylesheets/style.css */
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.single_row button {
+	vertical-align: top;
+}
+
+.login-container {
+    max-width: 500px;
+    padding: 3px;
+    margin: auto;
+}
+
+#login_container {
+    position: relative;
+}
+
+#signup {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.desc {
+	font-size: 18pt;
+}
+
+.todo-list li {
+	position: relative;
+	margin-bottom: 30px;
+	border: thin solid black;
+	padding: 3px;
+	-webkit-border-radius: 4px;
+	   -moz-border-radius: 4px;
+	        border-radius: 4px;
+}
+
+.todo-list li:last-child {
+	margin-bottom: 0px;
+}
+
+.todo-list i {
+	position: absolute;
+	margin: 0px;
+	left: 0px;
+	top: 0px;
+}
+
+div.task {
+	margin-left: 10px;
+	display: inline-block;
+}
+
+form.inline {
+	display: inline-block;
+	position: absolute;
+	right: 0px;
+	bottom: -26px;
+	margin: 1px;
+}
+
+.date {
+	margin-left: 5px;
+	font-size: 8pt;
+	line-height: 10pt;
+}

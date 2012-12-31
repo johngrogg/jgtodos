@@ -1,0 +1,65 @@
+extends layout
+
+block content
+  div.container-fluid
+    div.page-header
+      h1 #{title}
+    div#login_container.well.login-container.container-fluid
+      if title == 'Signup'
+        form(action="/newUser", method="post", class="form-horizontal", id="login_form")
+          fieldset
+            legend
+              if locals.new_password != ''
+                | Please verify your new Username and Password.
+              else if locals.new_username != ''
+                | Please verify your Username and enter a Password.
+              else
+                | Please enter a Username and Password.
+            div.control-group
+              label.control-label Username
+              div.controls
+                input(type='text', name='username', value=locals.new_username)
+            div.control-group
+              label.control-label Firstname
+              div.controls
+                input(type='text', name='firstname', value='')
+            div.control-group
+              label.control-label Lastname
+              div.controls
+                input(type='text', name='lastname', value='')
+            div.control-group
+              label.control-label Password
+              div.controls
+                input(type='password', name='password', value=locals.new_password)
+            div.control-group
+              label.control-label Verify Password
+              div.controls
+                input(type='password', name='verify_password')
+            div.control-group
+              div.controls
+                button(type='submit', class='btn btn-primary') Create New user
+            if locals.message != ''
+              div.alert 
+                button(type="button", class="close", data-dismiss="alert") &times;
+                | #{message}
+      else
+        form(action="/login", method="post", class="form-horizontal", id="login_form")
+          fieldset
+            legend Please log in to see your todo list.
+            div.control-group
+              label.control-label Username
+              div.controls
+                input(type='text', name='username', value=locals.login_username)
+            div.control-group
+              label.control-label Password
+              div.controls
+                input(type='password', name='password')
+            div.control-group
+              div.controls
+                button(type='submit', class='btn btn-primary') Log In
+            if locals.message != ''
+              div.alert 
+                button(type="button", class="close", data-dismiss="alert") &times;
+                | #{message}
+        div#signup.right
+          a(href="/signup") Signup

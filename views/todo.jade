@@ -1,0 +1,45 @@
+extends layout
+
+block content
+  div.container-fluid
+    div.page-header
+      div.pull-right
+        a(href="/logout") Logout
+        |  | 
+        a(href="/deleteUser", onclick="if(!confirm('Are you sure you want to delete your account?')) {return false;}") Delete Account
+      h1 #{firstname}'s #{title}
+    div.container-fluid
+      div.row-fluid  
+        div.span4
+          div
+            form(action="/save", method="post", class="", id="new_todo_form")
+              fieldset
+                h2 New Todo
+                div.well
+                  input(type='text', placeholder='new todo', name='todo-text', class="span12")
+                  br
+                  button(type='submit', class='btn btn-primary') Add
+          if message != ''
+            div.alert.alert-success 
+              button(type="button", class="close", data-dismiss="alert") &times;
+              | #{message}
+        div.span8
+          div
+            each status, s in todos
+              h2 #{s}
+              div.well
+                ul.todo-list.unstyled
+                  each todo in status
+                    li
+                      i.icon-check
+                      div.task
+                        span.desc #{todo.name}
+                        div.date Created on #{todo.momentCreated}
+                        if todo.dateCompleted != undefined
+                          div.date Completed on #{todo.momentCompleted}
+                        form(action="/update", method="post", class="inline pull-right")
+                          input(type='hidden', value='#{todo.id}', name='update-id')
+                          if s == 'Pending'
+                            button(type='submit', value='Done', name='done', class="btn btn-success btn-mini") Done
+                            | &nbsp;
+                          button(type='submit', value='Delete', name='delete', class="btn btn-danger btn-mini") Delete
