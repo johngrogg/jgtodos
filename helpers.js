@@ -5,7 +5,6 @@ var redis = require('redis')
 // Export modules
 if (process.env.REDISTOGO_URL) {
   // redistogo connection
-  console.log("Connecting to redistogo:"+process.env.REDISTOGO_URL);
   var rtg   = require("url").parse(process.env.REDISTOGO_URL);
   var client = redis.createClient(rtg.port, rtg.hostname);
   client.auth(rtg.auth.split(":")[1]);
